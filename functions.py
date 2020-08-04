@@ -41,7 +41,9 @@ def logreg_sgrad(w, x_i, y_i):
     loss_sgrad = -y_i * x_i / (1 + np.exp(y_i * np.dot(x_i, w)))
     return loss_sgrad
 
-def logreg_grad(w, X, y):
+def logreg_grad(w, params):
+    X = params[0]
+    y = params[1]
     loss_grad = np.mean([logreg_sgrad(w, X[i], y[i]) for i in range(len(y))], axis=0)
     return loss_grad
     
